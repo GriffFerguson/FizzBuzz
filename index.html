@@ -1,167 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-    <meta charset="utf-8">
-    <title>FizzBuzz</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <style>
-        body{margin:0;}
-        header{
-            width:100%;
-            margin-top: 18vh;
-            font-size: 3em;
-            margin-bottom: 4vw;
-            text-align: center;
-        }
-        h1, h2 {
-            font-family: sans-serif;
-            text-align: center;
-            font-weight: bolder;
-            margin:0.1em;
-        }
-        h1 {font-size:2em;}
-        h2 {font-size:1.3em;}
-        main {
-            gap:12px;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-left:20vw;
-            margin-right:20vw;
-        }
-        form {
-            padding:0;
-            width:20%;
-        }
-        input, button {
-            padding:2px;
-            margin:0 0 0 -2px;
-            display:block;
-            width:97%;
-            font-family:sans-serif;
-        }
-        button {width:20%;}
-        hr {
-            height:0.1em;
-            background-color: black;
-            width:100%;
-        }
-        #output-container {
-            display:block;
-            width:97%;
-            border:0.05em solid black;
-            height:40vh;
-            font-family: monospace;
-            overflow-y:auto;
-            cursor:text;
-            overflow-x: hidden;
-        }
-        #output {
-            display:block;
-            width:100%;
-            margin:0.6em;
-            height:90%;
-        }
-        p {font-family:sans-serif;}
-        span {font-family: monospace;text-decoration: underline;}
-        p, span {font-size:1.1em;margin:0;}
-    </style>
-    <script>
-        function start() {
-            document.getElementById("output").innerHTML = 'Calculating...';
-            document.getElementById("status").innerHTML = 'Preparing';
-            setTimeout(() => {checkNumber();}, 50);
-            console.clear();
-        }
-        function checkNumber() {
-            var amount = document.getElementsByName("amount")[0].value;
-            console.log(amount);
-            if (amount < 0) {
-                document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-                alert("Please provide an integer greater than 0 and less than 2501");
-                document.getElementsByName("amount")[0].value = 0;
-                document.getElementById("output").innerHTML = '';
-            }
-            if (Math.ceil(amount) != amount) {
-                document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-                alert("Please provide an integer greater than 0 and less than 2501");
-                document.getElementsByName("amount")[0].value = 0;
-                document.getElementById("output").innerHTML = '';
-            }
-            if (amount > 2500) {
-                document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-                alert("Please provide an integer greater than 0 and less than 2501");
-                document.getElementsByName("amount")[0].value = 0;
-                document.getElementById("output").innerHTML = '';
-            }
-            if (amount != 0) {
-                fizzBuzz(amount);
-            } else {
-                document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-                alert("Please provide an integer greater than 0 and less than 2501");
-                document.getElementsByName("amount")[0].value = 0;
-                document.getElementById("output").innerHTML = '';
-            }
-        }
-        function fizzBuzz(amount) {
-            document.getElementById("status").innerHTML = 'Beginning calculations';
-            document.getElementById("output").innerHTML = '';
-            var numbers = []
-            var output = null;
-            var text = '';
-            for (let i = 0; i <= amount; i++) {
-                setTimeout(() => {
-                    document.getElementById("status").innerHTML = 'Calculating: ' + i + ' of ' + amount;
-                    // Detect Fizzes
-                    if ( (i / 3) == Math.ceil(i / 3)) {
-                        text += 'Fizz';
-                    }
+	<meta charset="utf-8">
+	<title>FizzBuzz</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style>
+		body{margin:0;}
+		header{
+			width:100%;
+			margin-top: 12vh;
+			font-size: 3em;
+			text-align: center;
+		}
+		/* header * {margin:0 !important;} */
+		h1, h2 {
+			font-family: sans-serif;
+			text-align: center;
+			font-weight: bolder;
+			margin:0.1em;
+		}
+		h1 {font-size:2em;}
+		h2 {font-size:1.3em;}
+		main {
+			gap:12px;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			margin-left:20vw;
+			margin-right:20vw;
+			margin-bottom:2vh;
+		}
+		form {
+			padding:0;
+			width:20%;
+		}
+		input, button {
+			padding:2px;
+			margin:0 0 0 -2px;
+			display:block;
+			width:97%;
+			font-family:sans-serif;
+		}
+		button {width:20%;}
+		hr {
+			height:0.1em;
+			background-color: black;
+			width:100%;
+		}
+		#output-container {
+			display:block;
+			width:97%;
+			border:0.05em solid black;
+			height:40vh;
+			font-family: monospace;
+			overflow-y:auto;
+			cursor:text;
+			overflow-x: hidden;
+		}
+		#output {
+			display:block;
+			width:100%;
+			margin:0.6em;
+			height:90%;
+		}
+		p {font-family:sans-serif;}
+		span {font-family: monospace;text-decoration: underline;}
+		p, span {font-size:1.1em;margin:0;}
+		#explanation {
+			font-size:0.5em;
+			font-family:sans-serif;
+			cursor:pointer;
+			margin-top:1vw;
+			font-weight:800;
+			margin-left:40vw;
+			margin-right:40vw;
+			z-index:2;
+			position:relative;
+		}
+		#explanation:hover {text-decoration: underline;}
+		#explanation-text {
+			display:block;
+			transition: all 400ms ease-in;
+			transform: translateY(-100%);
+			opacity:0;
+			text-decoration:none !important;
+			font-weight:initial;
+			font-size:0.4em;
+			z-index:1;
+			position:relative;
+			margin-left:35vw;
+			margin-right:35vw;
+			font-family:sans-serif;
+			text-align: left;
+			height:0vw;
+		}
+		.explanation-open {
+			transform: translateY(5%) !important;
+			opacity:1 !important;
+			height:100% !important;
+		}
+	</style>
+	<script>
+		function toggleExplanation() {
+			document.getElementById("explanation-text").classList.toggle("explanation-open");
+		}
+	</script>
+	<script>
+		function start() {
+			document.getElementById("output").innerHTML = 'Calculating...';
+			document.getElementById("status").innerHTML = 'Preparing';
+			setTimeout(() => {checkNumber();}, 50);
+			console.clear();
+		}
+		function checkNumber() {
+			var amount = document.getElementsByName("amount")[0].value;
+			console.log(amount);
+			if (amount < 0) {
+				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
+				alert("Please provide an integer greater than 0 and less than 2501");
+				document.getElementsByName("amount")[0].value = 0;
+				document.getElementById("output").innerHTML = '';
+			}
+			if (Math.ceil(amount) != amount) {
+				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
+				alert("Please provide an integer greater than 0 and less than 2501");
+				document.getElementsByName("amount")[0].value = 0;
+				document.getElementById("output").innerHTML = '';
+			}
+			if (amount > 2500) {
+				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
+				alert("Please provide an integer greater than 0 and less than 2501");
+				document.getElementsByName("amount")[0].value = 0;
+				document.getElementById("output").innerHTML = '';
+			}
+			if (amount != 0) {
+				fizzBuzz(amount);
+			} else {
+				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
+				alert("Please provide an integer greater than 0 and less than 2501");
+				document.getElementsByName("amount")[0].value = 0;
+				document.getElementById("output").innerHTML = '';
+			}
+		}
+		function fizzBuzz(amount) {
+			document.getElementById("status").innerHTML = 'Beginning calculations';
+			document.getElementById("output").innerHTML = '';
+			var numbers = []
+			var output = null;
+			var text = '';
+			for (let i = 0; i <= amount; i++) {
+				setTimeout(() => {
+					document.getElementById("status").innerHTML = 'Calculating: ' + i + ' of ' + amount;
+					// Detect Fizzes
+					if ( (i / 3) == Math.ceil(i / 3)) {
+						text += 'Fizz';
+					}
 
-                    //Detect Buzzes
-                    if ( (i / 5) == Math.ceil(i / 5)) {
-                        text += 'Buzz';
-                    }
+					//Detect Buzzes
+					if ( (i / 5) == Math.ceil(i / 5)) {
+						text += 'Buzz';
+					}
 
-                    //Output
-                    if (text != '') {
-                        output = i + ' -- ' + text + '!';
-                    } else {
-                        output = i;
-                    }
-                        //console.log(i);
-                        document.getElementById("output").innerHTML += output + '<br>';
+					//Output
+					if (text != '') {
+						output = i + ' -- ' + text + '!';
+					} else {
+						output = i;
+					}
+						//console.log(i);
+						document.getElementById("output").innerHTML += output + '<br>';
 
-                    output = null;
-                    text = '';
-                }, 30);
-            }
-        }
-    </script>
+					output = null;
+					text = '';
+				}, 30);
+			}
+		}
+	</script>
 </head>
 <body>
-    <header>
-        <h1>FizzBuzz</h1>
-    </header>
-    <main>
-        <h2>Please enter a number:</h2>
-        <form>
-            <input type="number" name="amount" placeholder="Enter a number" value="100">
-        </form>
-        <button onclick="start()">Calculate Fizzes &amp; Buzzes</button>
-        <hr>
-        <p><b>Status: </b><span id="status">Awaiting Input</span></p>
-        <div id="output-container">
-            <div id="output">
-                
-            </div>
-        </div>
-    </main>
-    <!-- <script>
-        setInterval(() => {
-            document.getElementById("output").innerText = '|';
-            setTimeout(() => {document.getElementById("output").innerText = '';}, 1000);
-        }, 2000)
-    </script> -->
+	<header>
+		<h1>FizzBuzz</h1>
+		<div id="explanation" onclick="toggleExplanation()">What is FizzBuzz?</div>
+		<div class id="explanation-text">
+			FizzBuzz is a programming challenge where a script must:
+			<ul>
+				<li>output "Fizz" if a number is divisible by 3</li>
+				<li>output "Buzz" if a number is divisible by 5</li>
+				<li>output "FizzBuzz" if a number is divisible by 3 and 5</li>
+			</ul>
+			Normally this script will calculate the above conditionals up to a predefinied number, typically 100. I added a twist to this challenge that allows it to calculate the conditionals to any number!
+		</div>
+	</header>
+	<hr style="width:60vw;margin-top:2vw;margin-bottom:2vw;">
+	<main>
+		<h2>Please enter a number:</h2>
+		<form>
+			<input type="number" name="amount" placeholder="Enter a number" value="100">
+		</form>
+		<button onclick="start()">Calculate Fizzes &amp; Buzzes</button>
+		<hr>
+		<p><b>Status: </b><span id="status">Awaiting Input</span></p>
+		<div id="output-container">
+			<div id="output">
+				
+			</div>
+		</div>
+	</main>
+	<!-- <script>
+		setInterval(() => {
+			document.getElementById("output").innerText = '|';
+			setTimeout(() => {document.getElementById("output").innerText = '';}, 1000);
+		}, 2000)
+	</script> -->
 </body>
 </html>
