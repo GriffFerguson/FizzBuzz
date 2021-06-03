@@ -80,7 +80,6 @@
 		}
 		#explanation:hover {text-decoration: underline;}
 		#explanation-text {
-			display:block;
 			transition: all 400ms ease-in;
 			transform: translateY(-100%);
 			opacity:0;
@@ -103,7 +102,12 @@
 	</style>
 	<script>
 		function toggleExplanation() {
-			document.getElementById("explanation-text").classList.toggle("explanation-open");
+			if (document.getElementById("explanation-text").classList == "") {
+				document.getElementById("explanation-text").style.display = "block";
+			} else if (document.getElementById("explanation-text").classList == "explanation-open") {
+				setTimeout(() => {document.getElementById("explanation-text").style.display = "none";}, 400);
+			}
+			setTimeout(() => {document.getElementById("explanation-text").classList.toggle("explanation-open");}, 20);
 		}
 	</script>
 	<script>
