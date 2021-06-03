@@ -42,7 +42,14 @@
 			width:97%;
 			font-family:sans-serif;
 		}
-		button {width:20%;}
+		button {
+			width:20%;
+			background-color: rgb(216, 216, 216);
+			border:0.1em solid black;
+			font-family:monospace;
+			font-size:1.05em;
+		}
+		button:hover {background-color: rgb(180, 180, 180);}
 		hr {
 			height:0.1em;
 			background-color: black;
@@ -126,29 +133,29 @@
 			console.log(amount);
 			if (amount < 0) {
 				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-				alert("Please provide an integer greater than 0 and less than 2501");
+				alert("Please provide an integer greater than 0");
 				document.getElementsByName("amount")[0].value = 0;
 				document.getElementById("output").innerHTML = '';
+				return;
 			}
 			if (Math.ceil(amount) != amount) {
 				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-				alert("Please provide an integer greater than 0 and less than 2501");
+				alert("Please provide an integer greater than 0");
 				document.getElementsByName("amount")[0].value = 0;
 				document.getElementById("output").innerHTML = '';
+				return;
 			}
-			if (amount > 2500) {
-				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-				alert("Please provide an integer greater than 0 and less than 2501");
-				document.getElementsByName("amount")[0].value = 0;
-				document.getElementById("output").innerHTML = '';
+			if (amount > 3000) {
+				alert("Please not that calculations above 3000 may result in slower calculations")
 			}
 			if (amount != 0) {
 				fizzBuzz(amount);
 			} else {
 				document.getElementById("status").innerHTML = 'Error; Now Awaiting Input';
-				alert("Please provide an integer greater than 0 and less than 2501");
+				alert("Please provide an integer greater than 0");
 				document.getElementsByName("amount")[0].value = 0;
 				document.getElementById("output").innerHTML = '';
+				return;
 			}
 		}
 		function fizzBuzz(amount) {
