@@ -55,7 +55,6 @@
 			height:40vh;
 			font-family: monospace;
 			overflow-y:auto;
-			cursor:text;
 			overflow-x: hidden;
 		}
 		#output {
@@ -63,7 +62,12 @@
 			width:100%;
 			margin:0.6em;
 			height:90%;
+			cursor:text;
 		}
+		#output-container::-webkit-scrollbar {width:0.9em;}
+		#output-container::-webkit-scrollbar-track {background:rgb(170, 170, 170);}
+		#output-container::-webkit-scrollbar-thumb {background:rgb(88, 88, 88);}
+		#output-container::-webkit-scrollbar-thumb:hover {background:rgb(32, 32, 32);}
 		p {font-family:sans-serif;}
 		span {font-family: monospace;text-decoration: underline;}
 		p, span {font-size:1.1em;margin:0;}
@@ -186,7 +190,7 @@
 	<header>
 		<h1>FizzBuzz</h1>
 		<div id="explanation" onclick="toggleExplanation()">What is FizzBuzz?</div>
-		<div class id="explanation-text">
+		<div class id="explanation-text" style="display:none;">
 			FizzBuzz is a programming challenge where a script must:
 			<ul>
 				<li>output "Fizz" if a number is divisible by 3</li>
