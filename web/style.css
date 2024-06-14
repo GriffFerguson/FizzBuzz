@@ -1,0 +1,205 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    margin-top: 12vh;
+    font-size: 3em;
+    text-align: center;
+}
+
+header p {
+    margin-top: 20px;
+}
+
+h1, h2 {
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bolder;
+    margin: 0.1em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
+main {
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-bottom: 2vh;
+}
+
+form {
+    padding: 0;
+    width: 20%;
+}
+
+input, button {
+    padding: 2px;
+    margin: 0 0 0 -2px;
+    display: block;
+    width: 97%;
+    font-family: sans-serif;
+}
+
+input {
+    background-color: rgb(240, 240, 240);
+    border: 0.12em solid rgb(80, 80, 80);
+    transition: all 250ms ease-in-out;
+    color: rgb(50, 50, 50)
+}
+
+input:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+input:focus {
+    border: 0.18em solid black;
+    background-color: rgb(220, 220, 220);
+    color: black;
+}
+
+button {
+    width: 20%;
+    background-color: rgb(216, 216, 216);
+    border: 0.1em solid black;
+    font-family: monospace;
+    font-size: 1.05em;
+}
+
+button:hover {
+    background-color: rgb(180, 180, 180);
+}
+
+hr {
+    height: 0.1em;
+    background-color: black;
+    width: 100%;
+    width:60vw;
+    margin-top:2vw;
+    margin-bottom:2vw;
+}
+
+#output-container {
+    display: block;
+    width: 97%;
+    border: 0.05em solid black;
+    height: 40vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#output {
+    display: block;
+    width: 100%;
+    margin: 0.6em;
+    height: auto;
+    cursor: text;
+}
+
+#output span {
+    font-family: monospace;
+    display: block;
+    text-decoration: none;
+}
+
+#output-container::-webkit-scrollbar {
+    width: 0.9em;
+}
+
+#output-container::-webkit-scrollbar-track {
+    background: rgb(170, 170, 170);
+}
+
+#output-container::-webkit-scrollbar-thumb {
+    background: rgb(88, 88, 88);
+}
+
+#output-container::-webkit-scrollbar-thumb:hover {
+    background: rgb(32, 32, 32);
+}
+
+p {
+    font-family: sans-serif;
+}
+
+span {
+    font-family: monospace;
+    text-decoration: underline;
+}
+
+p, span {
+    font-size: 18px;
+    margin: 0;
+}
+
+#explanation {
+    font-size: 0.5em;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin-top: 1vw;
+    font-weight: 800;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    z-index: 2;
+    position: relative;
+}
+
+#explanation:hover {
+    text-decoration: underline;
+}
+
+#explanation-text {
+    transition: all 400ms ease-in;
+    transform: translateY(-100%);
+    opacity: 0;
+    text-decoration: none !important;
+    font-weight: initial;
+    font-size: 0.4em;
+    z-index: 1;
+    position: relative;
+    margin-left: 35vw;
+    margin-right: 35vw;
+    font-family: sans-serif;
+    text-align: left;
+    height: 0vw;
+}
+
+.explanation-open {
+    transform: translateY(5%) !important;
+    opacity: 1 !important;
+    height: 100% !important;
+}
+
+.noscript {
+    display: block;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.9);
+    top: 0;
+    left: 0;
+}
+
+.noscript-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+}

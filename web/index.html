@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>FizzBuzz</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script>
+		function toggleExplanation() {
+			if (document.getElementById("explanation-text").classList == "") {
+				document.getElementById("explanation-text").style.display = "block";
+			} else if (document.getElementById("explanation-text").classList == "explanation-open") {
+				setTimeout(() => {document.getElementById("explanation-text").style.display = "none";}, 400);
+			}
+			setTimeout(() => {document.getElementById("explanation-text").classList.toggle("explanation-open");}, 20);
+		}
+	</script>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<noscript>
+		<div class="noscript-container">
+			<h1>This site requires JavaScript!</h1>
+			<p>Make sure you are using a modern browser with JavaScript enabled.</p>
+		</div>
+	</noscript>
+	<header>
+		<h1>FizzBuzz</h1>
+		<div id="explanation" onclick="toggleExplanation()">What is FizzBuzz?</div>
+		<div id="explanation-text" style="display:none;">
+			FizzBuzz is a programming challenge where a script must:
+			<ul>
+				<li>output "Fizz" if a number is divisible by 3</li>
+				<li>output "Buzz" if a number is divisible by 5</li>
+				<li>output "FizzBuzz" if a number is divisible by 3 and 5</li>
+			</ul>
+			Normally this script will calculate the above criteria up to a predefinied number, typically 100. However, this variation allows for any number range to be calculated.
+		</div>
+		<p><a href="../index.html">Return to homepage.</a></p>
+	</header>
+	<hr>
+	<main>
+		<h2>Please enter a number:</h2>
+		<form>
+			<input type="number" name="amount" placeholder="Enter a number" value="100">
+		</form>
+		<button onclick="start()">Calculate Fizzes &amp; Buzzes</button>
+		<hr>
+		<p><b>Status: </b><span id="status">Awaiting Input</span></p>
+		<div id="output-container">
+			<div id="output">
+				
+			</div>
+		</div>
+	</main>
+	<script src="fizzbuzz.js"></script>
+</body>
+</html>
