@@ -2,7 +2,8 @@ var liElems = document.getElementsByTagName("li");
 var viewer = {
     frame: document.getElementById("file-viewer"),
     filename: document.getElementById("viewer-filename"),
-    download: document.getElementById("viewer-download")
+    download: document.getElementById("viewer-download"),
+    openNew: document.getElementById("viewer-open-new")
 }
 
 for (var li of liElems) {
@@ -25,8 +26,13 @@ for (var li of liElems) {
             viewer.frame.innerHTML = "";
             viewer.download.setAttribute("href", e.target.dataset.viewerLink);
             viewer.filename.innerText = e.target.dataset.viewerLink;
+            if (e.target.dataset.viewerLink.endsWith(".html")) {
+                viewer.openNew.style.display = "inline";
+                viewer.openNew.setAttribute("href", e.target.dataset.viewerLink);
+            } else {
+                viewer.openNew.style.display = "none";
+            }
             viewer.frame.appendChild(elem);
-
         })
     })
 }
